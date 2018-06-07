@@ -18,6 +18,10 @@ class CreateCountsTable extends Migration
             $table->bigInteger('count_num')->default(0);
             $table->timestamps();
         });
+        DB::table('counts')->insert([
+          'id' => 1,
+          'count_num' => 0,
+        ]);
     }
 
     /**
