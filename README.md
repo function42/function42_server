@@ -1,13 +1,13 @@
 # 博客后台开发相关
 
 ## 目录
-一. 布置到本地开发环境
+一. 本地开发
 
-二. 布置到服务器环境
+二. 服务器
 
 三. 开发历程
 
-## 一. 布置到本地开发环境
+## 一. 本地开发
 （终端默认git bash）
 
 ### 1. 克隆项目
@@ -50,7 +50,13 @@ grant all on fun42db.* to 'fun42'@'%';
 ### 6. 移植数据表
 `php artisan migrate`
 
-## 二. 布置到服务器环境
+### 7. 进行开发
+使用 `vagrant up` 加载虚拟机
+使用 `npm run watch` 开启 js 的编译预览
+
+## 二. 服务器
+
+略。
 
 
 ## 三. 开发历程
@@ -96,9 +102,9 @@ create user 'fun42'@'%' identified by 'happy';
 grant all on fun42db.* to 'fun42'@'%';
 ```
 
-### 1. 添加计数器功能
+### 2. 添加计数器功能
 
-#### 1.1 创建 Count 模型，移植数据表
+#### 2.1 创建 Count 模型，移植数据表
 根目录下执行 `php artisan make:model Count -m`
 
 修改 /database/migrations 的 2018_03_11_090139_create_counts_table.php
@@ -120,7 +126,7 @@ public function up()
 
 根目录下执行 `php artisan migrate` ，以对数据库产生作用
 
-#### 1.2 创建 CountController 控制器
+#### 2.2 创建 CountController 控制器
 根目录下执行 `php artisan make:controller CountController --resource`
 
 修改 /routes 的 web.php ，如下新增路由
@@ -150,9 +156,9 @@ public function create()
 }
 ```
 
-### 2. 跨域
+### 3. 跨域
 
-#### 2.1 新增中间件
+#### 4.1 新增中间件
 在根目录下执行 `php artisan make:middleware CrossHttp`
 
 修改 /app/Http/Middleware 下的 CrossHttp.php
@@ -168,7 +174,7 @@ public function handle($request, Closure $next)
 }
 ```
 
-#### 2.2 注册中间件
+#### 4.2 注册中间件
 在 /app/Http 的 Kernel.php 中修改
 
 ```
@@ -182,3 +188,15 @@ protected $middleware = [
     \App\Http\Middleware\CrossHttp::class,
 ];
 ```
+
+### 5. 将默认前端框架切换成 react
+根目录下执行 `php artisan preset react`
+
+会出现下列字样
+
+```
+React scaffolding installed successfully.
+Please run "npm install && npm run dev" to compile your fresh scaffolding.
+```
+
+进入根目录执行 `npm install` ，其实我不太清楚这句有什么用
