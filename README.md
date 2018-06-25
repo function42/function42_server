@@ -7,6 +7,8 @@
 
 三. 开发历程
 
+</br>
+
 ## 一. 本地开发
 （终端默认git bash）
 
@@ -54,10 +56,13 @@ grant all on fun42db.* to 'fun42'@'%';
 使用 `vagrant up` 加载虚拟机
 使用 `npm run watch` 开启 js 的编译预览
 
+</br>
+
 ## 二. 服务器
 
 略。
 
+</br>
 
 ## 三. 开发历程
 
@@ -200,3 +205,100 @@ Please run "npm install && npm run dev" to compile your fresh scaffolding.
 ```
 
 进入根目录执行 `npm install` ，其实我不太清楚这句有什么用
+
+### 6. 用户登陆相关
+
+#### 6.1 开启用户登录和注册功能
+
+根目录下执行 `php artisan make:auth` 
+
+会出现下列字样
+
+```
+Authentication scaffolding generated successfully.
+```
+
+与此同时，目录 /app/Http/Controllers 里多了个 HomeController.php 文件，目录 /app 里多了个 User.php 文件，应该还有很多地方发生了改变，此处不述
+
+主页页面重新载入后，右上角也会多出 LOGIN 和 REGISTER 的按钮
+
+#### 6.2 用户表更改-基本信息更改
+
+在之前 `php artisan migrate` 的时候已经把 user 表按默认创建好了，但那并不是我需要的
+
+我需要的用户表中包括的数据段：
+
+id、name、email、password、self_code、valid_code、rememberToken、timestamps
+
+其中 id 和 name 以及 self_code 要保持唯一性
+
+执行 `composer require doctrine/dbal` ，否则一会运行 `php artisan migrate` 会报错
+
+执行 ` php artisan make:migration add_self_code_and_valid_code_columns_in_users_table --table=users` ，修改 2018_06_25_161352_add_self_code_and_valid_code_columns_in_users_table.php 如下
+
+```
+public function up()
+{
+	Schema::table('users', function (Blueprint $table) {
+		$table->string('self_code')->unique()->nullable();
+		$table->string('valid_code')->nullable();
+	});
+}
+
+public function down()
+{
+	Schema::table('users', function (Blueprint $table) {
+		$table->dropColumn('self_code');
+		$table->dropColumn('valid_code');
+	});
+}
+```
+
+执行 ` php artisan make:migration modify_name_column_in_users_table --table=users` ，
+
+修改 2018_06_25_164528_modify_name_column_in_users_table.php 如下
+
+```
+public function up()
+{
+	Schema::table('users', function (Blueprint $table) {
+		$table->string('name')->unique()->change();
+	});
+}
+
+public function down()
+{
+	Schema::table('users', function (Blueprint $table) {
+		$table->dropUnique('users_name_unique');
+	});
+}
+```
+
+执行 `php artisan migrate` 
+
+修改 `/app/User.php` 如下
+
+```
+protected $fillable = [
+	'name', 'email', 'password', 'self_code'
+];
+```
+
+修改 `\app\Http\Controllers\Auth\RegisterController.php` 如下
+
+```
+protected function create(array $data)
+{
+	return User::create([
+		'name' => $data['name'],
+		'email' => $data['email'],
+		'password' => Hash::make($data['password']),
+		'self_code' => str_random(6),
+	]);
+}
+```
+
+此处先不考虑 valid_code ，留着字段以后用
+
+
+
