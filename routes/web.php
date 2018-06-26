@@ -19,3 +19,6 @@ Route::resource('count', 'CountController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/welcomeAboard', function () {
+    return view('home');
+});
