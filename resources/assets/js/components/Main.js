@@ -5,7 +5,8 @@ import { BrowserRouter as Router, HashRouter, Route, Link } from 'react-router-d
 import { Layout, Menu, Icon, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 import { BasisInfo } from './BasisInfo/BasisInfo'
-import { ArticleEdit } from './ArticleEdit/ArticleEdit'
+import { ArticleList } from './ArticleEdit/ArticleList'
+import { ArticleCreate } from './ArticleEdit/ArticleCreate'
 
 
 
@@ -32,13 +33,13 @@ export default class Main extends Component {
 					<Sider className="sider" style={{ position: 'fixed' }}>
 						<Menu theme="dark" mode="inline">
 							<Menu.Item key="basis_info">
-								<Link to="/BasisInfo">
+								<Link to="/info">
 							  	<Icon type="user" />
 							  	<span className="nav-text">基本信息</span>
 							  </Link>
 							</Menu.Item>
 							<Menu.Item key="article_edit">
-								<Link to="/ArticleEdit">
+								<Link to="/articles">
 							  	<Icon type="file-text" />
 							  	<span className="nav-text">文章编辑</span>
 							  </Link>
@@ -52,8 +53,9 @@ export default class Main extends Component {
 							<Button className="btn_header" type="primary" onClick={this.logout}>Logout</Button>
 						</Header>
 						<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-							<Route path="/BasisInfo" exact component={BasisInfo}/>
-							<Route path="/ArticleEdit" exact component={ArticleEdit}/>						
+							<Route path="/info" exact component={BasisInfo}/>
+							<Route path="/articles" exact component={ArticleList}/>						
+							<Route path="/articles/create" exact component={ArticleCreate}/>						
 							<p>Welcome Aboard!</p>
 						</Content>
 						<Footer style={{ textAlign: 'center' }}>

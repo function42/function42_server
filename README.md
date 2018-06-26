@@ -228,7 +228,7 @@ Authentication scaffolding generated successfully.
 
 我需要的用户表中包括的数据段：
 
-id、name、email、password、self_code、valid_code、rememberToken、timestamps
+id、name、email、password、self_code、valid_code、level、rememberToken、timestamps
 
 其中 id 和 name 以及 self_code 要保持唯一性
 
@@ -274,13 +274,31 @@ public function down()
 }
 ```
 
+执行 `php artisan make:migration add_level_column_in_users_table --table=users ` ，修改如下
+
+```
+public function up()
+{
+	Schema::table('users', function (Blueprint $table) {
+		$table->unsignedTinyInteger('level')->default(3);
+	});
+}
+
+public function down()
+{
+	Schema::table('users', function (Blueprint $table) {
+		$table->dropColumn('level');
+	});
+}
+```
+
 执行 `php artisan migrate` 
 
 修改 `/app/User.php` 如下
 
 ```
 protected $fillable = [
-	'name', 'email', 'password', 'self_code'
+	'name', 'email', 'password', 'self_code', 'level'
 ];
 ```
 
@@ -300,5 +318,232 @@ protected function create(array $data)
 
 此处先不考虑 valid_code ，留着字段以后用
 
+#### 6.3 用户权限限制（控制登录后可见页面）
 
+ `php artisan make:middleware Permission`  创建中间件，用于给予对应 level 返回的页面，修改如下
+
+```
+use Auth;
+
+public function handle($request, Closure $next)
+{
+	if (!in_array(Auth::user()->level,[0, 233])) {
+		return redirect('/welcomeAboard');
+	}
+	return $next($request);
+}
+```
+
+修改 Kernel.php
+
+```
+protected $routeMiddleware = [
+    'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+    'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+    'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    'can' => \Illuminate\Auth\Middleware\Authorize::class,
+    'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+    'permission' => \App\Http\Middleware\Permission::class,
+];
+```
+
+修改 \app\Http\Controllers\HomeController.php 如下
+
+```
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('adminhome');
+    }
+}
+```
+
+【注】记得在 /resources/view 下创建 adminhome.blade.php 文件
+
+修改 \routes\web.php ，添加
+
+```
+Route::get('/welcomeAboard', function () {
+    return view('home');
+});
+```
+
+这样可以实现指定用户能看到 adminhome 页面还是 home 页面
+
+#### 6.4 修改 blade 文件
+
+对于 home.blade.php
+
+```
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    Welcome aboard!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+```
+
+对于 adminhome.blade.php
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>FUNCTION42 后台</title>
+</head>
+<body>
+    <p>Hello</p>
+    <div id="example"></div>
+    <div id="root"></div>
+</body>
+<script src="{{ asset('js/app.js') }}"></script>
+</html>
+```
+
+对于 /resources/assets/js/app.js 修改
+
+```
+require('./components/Main');
+```
+
+在 /resources/assets/js/components 中新增 Main.js
+
+```
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+export default class Main extends Component {
+    render() {
+        return (
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="card">
+                            <div className="card-header">Main Component</div>
+
+                            <div className="card-body">
+                                I'm an main component!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+if (document.getElementById('root')) {
+    ReactDOM.render(<Main />, document.getElementById('root'));
+}
+
+```
+
+### 7. 初步进行后端和用户有关的 api 的开发
+
+根目录输入 `php artisan make:controller UserController --api --model=User` ，创建对用户的 controller
+
+把 index() 函数修改成 basis_info()
+
+```
+use Auth;
+public function basis_info()
+{
+	return Auth::User();
+}
+```
+
+web.php 中添加
+
+```
+Route::middleware('auth')->get('/user', 'UserController@basis_info');
+```
+
+即是登陆后才可对该 api 发送请求
+
+### 8. 引入 antd-design
+
+命令行输入
+
+```
+npm install antd --save
+npm install babel-plugin-import --save
+npm install react-router-dom --save
+```
+
+新增 .babelrc 文件
+
+```
+{
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": "css" }],
+    ["transform-object-rest-spread"]
+  ]
+}
+```
+
+随后按自己需求修改页面。此处略。
+
+### 9. 添加文章功能
+
+根目录下执行
+
+```
+php artisan make:model Article -m
+php artisan make:controller ArticleController --resource --model=Article
+```
+
+修改 2018_06_26_075915_create_articles_table.php
+
+```
+public function up()
+{
+    Schema::create('articles', function (Blueprint $table) {
+        $table->increments('id');
+        $table->boolean('is_public')->default(1);
+        $table->string('title');
+        $table->longText('content');
+        $table->unsignedInteger('user_id');
+        $table->unsignedBigInteger('likes_count')->default(0);
+        $table->unsignedInteger('comments_id')->nullable();
+        $table->timestamps();
+    });
+}
+```
 
