@@ -22,6 +22,8 @@
         "react-dom": "^16.2.0"
     },
     "dependencies": {
-        "antd": "^3.6.4"
+        "antd": "^3.6.4",
+        "babel-plugin-import": "^1.8.0",
+        "react-router-dom": "^4.3.1"
     }
 }
