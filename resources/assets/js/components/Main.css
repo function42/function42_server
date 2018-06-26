@@ -10,6 +10,11 @@
 }
 
 .btn_header {
-	margin: 6px;
+	margin: 0px 6px 0px 6px;
 	float: right;
+}
+
+.btn_group {
+	margin: 6px 0px 6px 0px;
+	height: 45px;
 }

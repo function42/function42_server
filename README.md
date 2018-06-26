@@ -547,3 +547,7 @@ public function up()
 }
 ```
 
+```
+npm install marked --save
+```
+

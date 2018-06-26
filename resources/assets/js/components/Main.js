@@ -48,7 +48,7 @@ export default class Main extends Component {
 					</Sider>
 
 					<Layout style={{ marginLeft: 200 }}>
-						<Header style={{ background: '#fff', padding: 0 }}>
+						<Header style={{ background: '#fff', padding: "6px", height: "50px" }}>
 							<Button className="btn_header" href="/">Home</Button>
 							<Button className="btn_header" type="primary" onClick={this.logout}>Logout</Button>
 						</Header>
