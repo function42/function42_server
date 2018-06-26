@@ -1,0 +1,15 @@
+.sider {
+  height: 100vh;
+  overflow: 'auto';
+  /*position: 'fixed';*/
+  left: 0;
+}
+
+.nav-text {
+
+}
+
+.btn_header {
+	margin: 10px;
+	float: right;
+}
