@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/welcomeAboard', function () {
     return view('home');
 });
+
+Route::middleware('auth')->get('/user', 'UserController@basis_info');
