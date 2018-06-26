@@ -30,7 +30,7 @@ export default class Main extends Component {
 			<HashRouter>
 				<Layout>
 					<Sider className="sider" style={{ position: 'fixed' }}>
-						<Menu theme="dark" mode="inline" defaultSelectedKeys={['basis_info']}>
+						<Menu theme="dark" mode="inline">
 							<Menu.Item key="basis_info">
 								<Link to="/BasisInfo">
 							  	<Icon type="user" />
@@ -54,6 +54,7 @@ export default class Main extends Component {
 						<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
 							<Route path="/BasisInfo" exact component={BasisInfo}/>
 							<Route path="/ArticleEdit" exact component={ArticleEdit}/>						
+							<p>Welcome Aboard!</p>
 						</Content>
 						<Footer style={{ textAlign: 'center' }}>
 							For me!

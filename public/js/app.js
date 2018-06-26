@@ -43070,7 +43070,7 @@ var Main = function (_Component) {
 						{ className: 'sider', style: { position: 'fixed' } },
 						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 							__WEBPACK_IMPORTED_MODULE_3_antd_lib_menu___default.a,
-							{ theme: 'dark', mode: 'inline', defaultSelectedKeys: ['basis_info'] },
+							{ theme: 'dark', mode: 'inline' },
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 								__WEBPACK_IMPORTED_MODULE_3_antd_lib_menu___default.a.Item,
 								{ key: 'basis_info' },
@@ -43122,7 +43122,12 @@ var Main = function (_Component) {
 							Content,
 							{ style: { margin: '24px 16px 0', overflow: 'initial' } },
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/BasisInfo', exact: true, component: __WEBPACK_IMPORTED_MODULE_12__BasisInfo_BasisInfo__["a" /* BasisInfo */] }),
-							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/ArticleEdit', exact: true, component: __WEBPACK_IMPORTED_MODULE_13__ArticleEdit_ArticleEdit__["a" /* ArticleEdit */] })
+							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/ArticleEdit', exact: true, component: __WEBPACK_IMPORTED_MODULE_13__ArticleEdit_ArticleEdit__["a" /* ArticleEdit */] }),
+							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+								'p',
+								null,
+								'Welcome Aboard!'
+							)
 						),
 						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 							Footer,
@@ -72563,37 +72568,49 @@ var BasisInfo = function (_React$Component) {
 
 		_this.state = {
 			level: 3,
-			self_code: ""
+			self_code: "",
+			count_num: ""
 		};
 		return _this;
 	}
 
 	_createClass(BasisInfo, [{
-		key: 'componentWillMount',
+		key: "componentWillMount",
 		value: function componentWillMount() {
 			this.fetchData();
 		}
 	}, {
-		key: 'fetchData',
+		key: "fetchData",
 		value: function fetchData() {
 			var that = this;
-			axios.get('/user').then(function (response) {
+			// axios.get('/user')
+			// .then(function (response) {
+			//   that.setState({
+			// 		level: response.data.level,
+			// 		self_code: response.data.self_code,
+			//   })
+			// }).catch(function (error) { console.log(error); });
+
+			axios.get('/count').then(function (response) {
+				console.log(response);
 				that.setState({
-					level: response.data.level,
-					self_code: response.data.self_code
+					count_num: response.data
 				});
 			}).catch(function (error) {
 				console.log(error);
 			});
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'p',
-				null,
-				'\u9080\u8BF7\u7801\u4E3A ',
-				this.state.self_code
+			return (
+				// <p>邀请码为 {this.state.self_code}</p>
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					"h1",
+					null,
+					"\u76EE\u524D\u50AC\u66F4\u6570\u4E3A ",
+					this.state.count_num
+				)
 			);
 		}
 	}]);
