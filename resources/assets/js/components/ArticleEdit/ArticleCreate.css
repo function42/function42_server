@@ -1,6 +1,26 @@
 .edit_containter {
-  height: 200px;
-  margin: 15px 10px 2px 0px;
-  border: 2px solid gray;
-  background: #fff;
+  margin: 2px 10px 2px 0px;
+  font-size: 16px;
+}
+
+.edit_title {
+	width: 98%;
+	padding: 1px 1px 1px 5px;
+	border: 1px solid #404040;
+}
+
+.edit_content {
+	width: 98%;
+	height: 300px;
+	padding: 1px 1px 1px 5px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	border: 1px solid gray;
+	background: #fff;
+}
+
+.preview_containter {
+	border: 1px dashed gray;
+	margin: 2px 10px 2px 0px;
+	padding: 1px 1px 1px 5px;
 }
