@@ -26,7 +26,7 @@ export class BasisInfo extends React.Component {
 
 		axios.get('/count')
 		.then(function (response) {
-			console.log(response)
+			// console.log(response)
 		  that.setState({
 				count_num: response.data,
 		  })

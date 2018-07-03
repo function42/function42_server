@@ -53,6 +53,7 @@ export default class Main extends Component {
 							<Button className="btn_default" type="primary" onClick={this.logout}>Logout</Button>
 						</Header>
 						<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+							<Route path="/" exact component={BasisInfo}/>
 							<Route path="/info" exact component={BasisInfo}/>
 							<Route path="/articles" exact component={ArticleList}/>						
 							<Route path="/articles/create" exact component={ArticleEdit}/>

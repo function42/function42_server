@@ -47142,6 +47142,7 @@ var Main = function (_Component) {
 						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 							Content,
 							{ style: { margin: '24px 16px 0', overflow: 'initial' } },
+							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/', exact: true, component: __WEBPACK_IMPORTED_MODULE_12__BasisInfo_BasisInfo__["a" /* BasisInfo */] }),
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/info', exact: true, component: __WEBPACK_IMPORTED_MODULE_12__BasisInfo_BasisInfo__["a" /* BasisInfo */] }),
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles', exact: true, component: __WEBPACK_IMPORTED_MODULE_13__Article_ArticleList__["a" /* ArticleList */] }),
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles/create', exact: true, component: __WEBPACK_IMPORTED_MODULE_14__Article_ArticleEdit__["a" /* ArticleEdit */] }),
@@ -76309,7 +76310,7 @@ var BasisInfo = function (_React$Component) {
 			// }).catch(function (error) { console.log(error); });
 
 			axios.get('/count').then(function (response) {
-				console.log(response);
+				// console.log(response)
 				that.setState({
 					count_num: response.data
 				});
