@@ -9,9 +9,9 @@
 	font-size: 16px;
 }
 
-.btn_header {
-	margin: 0px 6px 0px 6px;
+.btn_default {
 	float: right;
+	margin: 0px 6px 0px 6px;
 }
 
 .btn_group {

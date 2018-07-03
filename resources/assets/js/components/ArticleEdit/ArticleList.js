@@ -1,18 +1,80 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'antd';
+import { Button, Table, Switch, Notification } from 'antd';
 import { Link } from 'react-router-dom';
 
 export class ArticleList extends React.Component {
 	constructor () {
-    super();
+    super()
     this.state = {
       articles:[],
-    };
+    }
+    Notification.config({
+			duration: 3,
+    	placement: 'topLeft',
+		})
   }
 
-  articleCreate () {
+  componentWillMount () {
+		this.fetchData()
+	}
 
-  }
+	fetchData () {
+  	var that = this
+		axios.get('/articles/list')
+    .then(function (response) {
+      that.setState({
+      	articles: response.data
+      })
+    }).catch(function (error) { console.log(error); });
+	}
+
+	changePulic (id) {
+		let that = this
+		axios.post('/articles/changePublic', {
+			id: id
+		}).then(function (response) {
+			let articles = that.state.articles
+			let index = articles.findIndex(function (element) {
+	  		return element.id == id;
+			})
+			articles[index].is_public = (articles[index].is_public + 1) % 2
+			that.setState({
+				articles: articles
+			})
+			Notification["success"]({
+	    	message: '成功',
+	    	description: response.data.description,
+	  	})
+    }).catch(function (error) { console.log(error); });
+	}
+
+	handleDelete (id) {
+		let index = this.state.articles.findIndex(function (element) {
+  		return element.id == id;
+		})
+		let articles = []
+		for (var i = 0; i < this.state.articles.length; i++) {
+			if (i === index) {
+				continue
+			}
+			articles.push(this.state.articles[i])
+		}
+		// console.log(this.state.articles)
+		// console.log(articles)
+		// console.log("want to handle delete")
+		this.setState({
+			articles: articles
+		})
+		Notification["success"]({
+    	message: '成功',
+    	description: "成功删除文章",
+  	})
+		console.log('need build api')
+	}
+
+	handleEdit () {
+		console.log("want to handle edit")
+	}
 
 	render () {
 	  const columns = [
@@ -24,16 +86,24 @@ export class ArticleList extends React.Component {
 	  		title: '公开',
 	  		dataIndex: 'is_public',
 	  		key: 'is_public',
+	  		render: (text, record) => {
+			    if (record.is_public) {
+			    	return <Switch size="small" defaultChecked onChange={this.changePulic.bind(this, record.id)} />
+			    } else {
+			    	return <Switch size="small" onChange={this.changePulic.bind(this, record.id)} />
+			    }
+	  		}
 	  	}, {
 	  		title: '标题',
 	  		dataIndex: 'title',
 	  		key: 'title',
+	  		width: '120px',
 	  	}, {
-	  		title: '用户',
+	  		title: '用户ID',
 	  		dataIndex: 'user_id',
 	  		key: 'user_id',
 	  	}, {
-	  		title: '点赞数',
+	  		title: '赞数',
 	  		dataIndex: 'likes_count',
 	  		key: 'likes_count',
 	  	}, {
@@ -41,25 +111,32 @@ export class ArticleList extends React.Component {
 	  		dataIndex: 'created_at',
 	  		key: 'created_at',
 	  	}, {
-	  		title: '修改时间',
-	  		dataIndex: 'update_at',
-	  		key: 'update_at',
-	  	}, {
 	  		title: '操作',
 	  		key: 'action',
+	  		render: (text, record) => (
+			    <span>
+			    	<Button className="btn_default" type="danger" onClick={this.handleDelete.bind(this, record.id)}>删除</Button>
+			    	<Button className="btn_default" onClick={this.handleEdit}>编辑</Button>
+			    </span>
+			  ),
 	  	}
 	  ];
 
 		return (
 			<div>
-				<Link to="/articles/create">
-          <Button className="btn_header" type="primary">创建新文章</Button>
-        </Link>
-				<Table
-          dataSource={ this.state.packages }
-          columns={ columns }
-          style={{ padding: '40px 0' }}
-        />
+				<div className="btn_group">
+					<Link to="/articles/create">
+	          <Button className="btn_default" type="primary">创建新文章</Button>
+	        </Link>
+				</div>
+				<div>
+					<Table
+	          dataSource = { this.state.articles }
+	          rowKey = "id"
+	          columns = { columns }
+	          style = {{ padding: '40px 0' , background: "white"}}
+	        />
+				</div>
 			</div>
 		)
 	}

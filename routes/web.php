@@ -24,3 +24,10 @@ Route::get('/welcomeAboard', function () {
 });
 
 Route::middleware('auth')->get('/user', 'UserController@basis_info');
+
+Route::middleware('auth')->get('/articles/list', 'ArticleController@articles_list');
+Route::middleware('auth')->post('/articles/save', 'ArticleController@save_article');
+Route::middleware('auth')->post('/articles/changePublic', 'ArticleController@change_public');
+// Route::middleware('auth')->post('/articles/changePublic', function () {
+// 	return 'hh';
+// });
