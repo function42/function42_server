@@ -1,7 +1,7 @@
 import "./ArticleEdit.css"
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Button, Input, Icon, Notification } from 'antd';
+import { Button, Input, Icon, Switch, Notification } from 'antd';
 const { TextArea } = Input;
 import marked from 'marked'
 
@@ -63,27 +63,19 @@ export class ArticleEdit extends React.Component {
   	})
 	}
 
-	handlePublish (e) {
-		let that = this
-		axios.post('/articles/save', {
-			title: that.state.title,
-			content: that.state.content,
-			is_public: 1,
-		}).then(function (response) {
-      Notification["success"]({
-	    	message: '文章发布成功',
-	    	description: '正在跳转',
-	  	})
-	  	that.props.history.push('/articles')
-    }).catch(function (error) { console.log(error); });
+	changePulic () {
+		this.setState({
+			is_public: (this.state.is_public + 1 ) % 2
+		})
 	}
 
 	handleSave (e) {
 		let that = this
 		axios.post('/articles/save', {
+			id: that.state.id,
 			title: that.state.title,
 			content: that.state.content,
-			is_public: 0,
+			is_public: that.state.is_public,
 		}).then(function (response) {
       Notification["success"]({
 	    	message: '文章保存成功',
@@ -126,8 +118,8 @@ export class ArticleEdit extends React.Component {
 						onInput = {this.onContentChange.bind(this)} />
 				</div>
 				<div className="btn_group">
-					<Button className="btn_default" onClick={this.handleSave.bind(this)}>保存</Button>
-					<Button className="btn_default" type="primary" onClick={this.handlePublish.bind(this)}>发出</Button>
+					<Switch checked={Boolean(this.state.is_public)} checkedChildren="公开" unCheckedChildren="隐藏" onChange={this.changePulic.bind(this)} />
+					<Button className="btn_default" type="primary" onClick={this.handleSave.bind(this)}>保存</Button>
 				</div>
 				<div className="preview_containter">
 					<div dangerouslySetInnerHTML={{__html: this.state.previewTitle}}/>

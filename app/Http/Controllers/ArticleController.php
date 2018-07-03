@@ -41,12 +41,19 @@ class ArticleController extends Controller
      */
     public function save_article(Request $request)
     {
-        $article = new Article;
-        // $user_id = Auth::User()->id;
-        $article->is_public = $request->is_public;
-        $article->title = $request->title;
-        $article->content = $request->content;
-        $article->user_id = $request->user()->id;
+        $article = Article::find($request->id);
+        if ($article) {
+            $article->title = $request->title;
+            $article->content = $request->content;
+            $article->is_public = $request->is_public;
+        } else {
+            $article = new Article;
+            // $user_id = Auth::User()->id;
+            $article->is_public = $request->is_public;
+            $article->title = $request->title;
+            $article->content = $request->content;
+            $article->user_id = $request->user()->id;
+        }
         $article->save();
         return response() -> json([
             'status' => 0,

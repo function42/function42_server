@@ -92182,25 +92182,31 @@ var ArticleList = function (_React$Component) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArticleEdit; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css__ = __webpack_require__(522);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_notification__ = __webpack_require__(525);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_input__ = __webpack_require__(529);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ArticleEdit_css__ = __webpack_require__(544);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ArticleEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__ArticleEdit_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_router_dom__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_marked__ = __webpack_require__(536);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_marked__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_switch_style_css__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_switch_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_switch_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_switch__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_switch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_switch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_button__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_button__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_notification_style_css__ = __webpack_require__(522);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_notification_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_notification__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_notification__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_input_style_css__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_input_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_antd_lib_input_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_input__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_antd_lib_input__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ArticleEdit_css__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ArticleEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__ArticleEdit_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_router_dom__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_marked__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_marked__);
+
+
 
 
 
@@ -92219,7 +92225,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var TextArea = __WEBPACK_IMPORTED_MODULE_5_antd_lib_input___default.a.TextArea;
+var TextArea = __WEBPACK_IMPORTED_MODULE_7_antd_lib_input___default.a.TextArea;
 
 
 
@@ -92239,7 +92245,7 @@ var ArticleEdit = function (_React$Component) {
 			previewContent: "",
 			is_public: 1
 		};
-		__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a.config({
+		__WEBPACK_IMPORTED_MODULE_5_antd_lib_notification___default.a.config({
 			duration: 3,
 			placement: 'topLeft'
 		});
@@ -92266,7 +92272,7 @@ var ArticleEdit = function (_React$Component) {
 					title: article.title,
 					content: article.content,
 					previewTitle: "<h1>" + article.title + "</h1>",
-					previewContent: __WEBPACK_IMPORTED_MODULE_9_marked___default()(article.content, { breaks: true }),
+					previewContent: __WEBPACK_IMPORTED_MODULE_11_marked___default()(article.content, { breaks: true }),
 					is_public: article.is_public
 				});
 			}).catch(function (error) {
@@ -92288,25 +92294,14 @@ var ArticleEdit = function (_React$Component) {
 			// console.log(e.target.innerText)
 			this.setState({
 				content: e.target.innerText,
-				previewContent: __WEBPACK_IMPORTED_MODULE_9_marked___default()(e.target.innerText, { breaks: true })
+				previewContent: __WEBPACK_IMPORTED_MODULE_11_marked___default()(e.target.innerText, { breaks: true })
 			});
 		}
 	}, {
-		key: 'handlePublish',
-		value: function handlePublish(e) {
-			var that = this;
-			axios.post('/articles/save', {
-				title: that.state.title,
-				content: that.state.content,
-				is_public: 1
-			}).then(function (response) {
-				__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a["success"]({
-					message: '文章发布成功',
-					description: '正在跳转'
-				});
-				that.props.history.push('/articles');
-			}).catch(function (error) {
-				console.log(error);
+		key: 'changePulic',
+		value: function changePulic() {
+			this.setState({
+				is_public: (this.state.is_public + 1) % 2
 			});
 		}
 	}, {
@@ -92314,11 +92309,12 @@ var ArticleEdit = function (_React$Component) {
 		value: function handleSave(e) {
 			var that = this;
 			axios.post('/articles/save', {
+				id: that.state.id,
 				title: that.state.title,
 				content: that.state.content,
-				is_public: 0
+				is_public: that.state.is_public
 			}).then(function (response) {
-				__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a["success"]({
+				__WEBPACK_IMPORTED_MODULE_5_antd_lib_notification___default.a["success"]({
 					message: '文章保存成功',
 					description: '正在跳转'
 				});
@@ -92342,72 +92338,68 @@ var ArticleEdit = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+			return __WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 				'div',
 				null,
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
 					{ className: 'btn_group' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_8_react_router_dom__["b" /* Link */],
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_10_react_router_dom__["b" /* Link */],
 						{ to: '/articles' },
-						__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-							__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
 							{ className: 'btn_default' },
 							'\u8FD4\u56DE'
 						)
 					),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
 						{ className: 'btn_default', type: 'primary', onClick: this.handlePreview.bind(this) },
 						'\u9884\u89C8'
 					),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
 						{ className: 'btn_default', type: 'dashed', onClick: this.handlePreview.bind(this) },
 						'\u5BFC\u5165'
 					)
 				),
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
 					{ className: 'edit_containter' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('input', {
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement('input', {
 						className: 'edit_title',
 						type: 'text',
 						value: this.state.title,
 						onChange: this.onTitleChange.bind(this) }),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', {
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement('div', {
 						className: 'edit_content',
 						dangerouslySetInnerHTML: { __html: this.state.content },
 						contentEditable: 'plaintext-only',
 						onInput: this.onContentChange.bind(this) })
 				),
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
 					{ className: 'btn_group' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-						{ className: 'btn_default', onClick: this.handleSave.bind(this) },
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_switch___default.a, { checked: Boolean(this.state.is_public), checkedChildren: '\u516C\u5F00', unCheckedChildren: '\u9690\u85CF', onChange: this.changePulic.bind(this) }),
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
+						{ className: 'btn_default', type: 'primary', onClick: this.handleSave.bind(this) },
 						'\u4FDD\u5B58'
-					),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-						{ className: 'btn_default', type: 'primary', onClick: this.handlePublish.bind(this) },
-						'\u53D1\u51FA'
 					)
 				),
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
 					{ className: 'preview_containter' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewTitle } }),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewContent } })
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewTitle } }),
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewContent } })
 				)
 			);
 		}
 	}]);
 
 	return ArticleEdit;
-}(__WEBPACK_IMPORTED_MODULE_7_react___default.a.Component);
+}(__WEBPACK_IMPORTED_MODULE_9_react___default.a.Component);
 
 /***/ }),
 /* 544 */
