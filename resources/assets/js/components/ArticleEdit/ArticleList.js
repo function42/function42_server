@@ -49,27 +49,26 @@ export class ArticleList extends React.Component {
 	}
 
 	handleDelete (id) {
-		let index = this.state.articles.findIndex(function (element) {
-  		return element.id == id;
-		})
-		let articles = []
-		for (var i = 0; i < this.state.articles.length; i++) {
-			if (i === index) {
-				continue
+		let that = this
+		axios.get('/articles/delete/'+id)
+		.then(function (response) {
+			let index = that.state.articles.findIndex(function (element) {
+	  		return element.id == id;
+			})
+			let articles = []
+			for (let i = 0; i < that.state.articles.length; i++) {
+				if (i != index) {
+					articles.push(that.state.articles[i])
+				}
 			}
-			articles.push(this.state.articles[i])
-		}
-		// console.log(this.state.articles)
-		// console.log(articles)
-		// console.log("want to handle delete")
-		this.setState({
-			articles: articles
-		})
-		Notification["success"]({
-    	message: '成功',
-    	description: "成功删除文章",
-  	})
-		console.log('need build api')
+			that.setState({
+				articles: articles
+			})
+			Notification["success"]({
+	    	message: '成功',
+	    	description: response.data.description,
+	  	})
+    }).catch(function (error) { console.log(error); });
 	}
 
 	handleEdit () {
@@ -116,7 +115,7 @@ export class ArticleList extends React.Component {
 	  		render: (text, record) => (
 			    <span>
 			    	<Button className="btn_default" type="danger" onClick={this.handleDelete.bind(this, record.id)}>删除</Button>
-			    	<Button className="btn_default" onClick={this.handleEdit}>编辑</Button>
+			    	<Button className="btn_default" onClick={this.handleEdit.bind(this)}>编辑</Button>
 			    </span>
 			  ),
 	  	}

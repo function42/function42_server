@@ -76441,27 +76441,27 @@ var ArticleList = function (_React$Component) {
 	}, {
 		key: 'handleDelete',
 		value: function handleDelete(id) {
-			var index = this.state.articles.findIndex(function (element) {
-				return element.id == id;
-			});
-			var articles = [];
-			for (var i = 0; i < this.state.articles.length; i++) {
-				if (i === index) {
-					continue;
+			var that = this;
+			axios.get('/articles/delete/' + id).then(function (response) {
+				var index = that.state.articles.findIndex(function (element) {
+					return element.id == id;
+				});
+				var articles = [];
+				for (var i = 0; i < that.state.articles.length; i++) {
+					if (i != index) {
+						articles.push(that.state.articles[i]);
+					}
 				}
-				articles.push(this.state.articles[i]);
-			}
-			// console.log(this.state.articles)
-			// console.log(articles)
-			// console.log("want to handle delete")
-			this.setState({
-				articles: articles
+				that.setState({
+					articles: articles
+				});
+				__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a["success"]({
+					message: '成功',
+					description: response.data.description
+				});
+			}).catch(function (error) {
+				console.log(error);
 			});
-			__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a["success"]({
-				message: '成功',
-				description: "成功删除文章"
-			});
-			console.log('need build api');
 		}
 	}, {
 		key: 'handleEdit',
@@ -76519,7 +76519,7 @@ var ArticleList = function (_React$Component) {
 						),
 						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
 							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
-							{ className: 'btn_default', onClick: _this2.handleEdit },
+							{ className: 'btn_default', onClick: _this2.handleEdit.bind(_this2) },
 							'\u7F16\u8F91'
 						)
 					);

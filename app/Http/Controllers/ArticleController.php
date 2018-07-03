@@ -113,13 +113,18 @@ class ArticleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * delete a article.
      *
-     * @param  \App\Article  $article
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function delete_article($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        return response() -> json([
+            'status' => 0,
+            'description' => '文章删除成功'
+        ]);
     }
 }
