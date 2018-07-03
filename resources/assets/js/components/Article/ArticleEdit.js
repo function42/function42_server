@@ -1,4 +1,4 @@
-import "./ArticleEdit.css"
+import "./Article.css"
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Input, Icon, Switch, Notification } from 'antd';
@@ -58,8 +58,8 @@ export class ArticleEdit extends React.Component {
 	onContentChange (e)  {
 		// console.log(e.target.innerText)
 		this.setState({
-			content: e.target.innerText,
-    	previewContent: marked(e.target.innerText, {breaks: true})
+			content: e.target.value,
+    	previewContent: marked(e.target.value, {breaks: true})
   	})
 	}
 
@@ -111,11 +111,11 @@ export class ArticleEdit extends React.Component {
 						type = "text"
 						value = {this.state.title}
 						onChange = {this.onTitleChange.bind(this)} />
-					<div
+					<textarea
 						className = "edit_content"
-						dangerouslySetInnerHTML={{__html: this.state.content}}
-						contentEditable = "plaintext-only"
-						onInput = {this.onContentChange.bind(this)} />
+						type = "text"
+						value = {this.state.content}
+						onChange = {this.onContentChange.bind(this)} />
 				</div>
 				<div className="btn_group">
 					<Switch checked={Boolean(this.state.is_public)} checkedChildren="公开" unCheckedChildren="隐藏" onChange={this.changePulic.bind(this)} />

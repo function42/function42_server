@@ -91967,9 +91967,11 @@ if (true) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_notification__ = __webpack_require__(525);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router_dom__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Article_css__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Article_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Article_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_router_dom__ = __webpack_require__(90);
 
 
 
@@ -91986,6 +91988,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -92077,10 +92080,13 @@ var ArticleList = function (_React$Component) {
 	}, {
 		key: 'handleEdit',
 		value: function handleEdit(id) {
-			// window.location('/')
 			this.props.history.push('/articles/edit/' + id);
-			// this.props.history.push('/')
-			console.log("want to handle edit");
+			// console.log("want to handle edit")
+		}
+	}, {
+		key: 'handlePreview',
+		value: function handlePreview(id) {
+			console.log('want a preview');
 		}
 	}, {
 		key: 'render',
@@ -92088,7 +92094,7 @@ var ArticleList = function (_React$Component) {
 			var _this2 = this;
 
 			var columns = [{
-				title: '序号',
+				title: '文章ID',
 				dataIndex: 'id',
 				key: 'id'
 			}, {
@@ -92097,16 +92103,16 @@ var ArticleList = function (_React$Component) {
 				key: 'is_public',
 				render: function render(text, record) {
 					if (record.is_public) {
-						return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', defaultChecked: true, onChange: _this2.changePulic.bind(_this2, record.id) });
+						return __WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', defaultChecked: true, onChange: _this2.changePulic.bind(_this2, record.id) });
 					} else {
-						return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', onChange: _this2.changePulic.bind(_this2, record.id) });
+						return __WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', onChange: _this2.changePulic.bind(_this2, record.id) });
 					}
 				}
 			}, {
 				title: '标题',
 				dataIndex: 'title',
 				key: 'title',
-				width: '120px'
+				width: '200px'
 			}, {
 				title: '用户ID',
 				dataIndex: 'user_id',
@@ -92123,43 +92129,48 @@ var ArticleList = function (_React$Component) {
 				title: '操作',
 				key: 'action',
 				render: function render(text, record) {
-					return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+					return __WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 						'span',
 						null,
-						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
 							{ className: 'btn_default', type: 'danger', onClick: _this2.handleDelete.bind(_this2, record.id) },
 							'\u5220\u9664'
 						),
-						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
-							{ className: 'btn_default', onClick: _this2.handleEdit.bind(_this2, record.id) },
+							{ className: 'btn_default', type: 'primary', onClick: _this2.handleEdit.bind(_this2, record.id) },
 							'\u7F16\u8F91'
+						),
+						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
+							{ className: 'btn_default', onClick: _this2.handlePreview.bind(_this2, record.id) },
+							'\u67E5\u770B'
 						)
 					);
 				}
 			}];
 
-			return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+			return __WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 				'div',
 				null,
-				__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
 					{ className: 'btn_group' },
-					__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["b" /* Link */],
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_10_react_router_dom__["b" /* Link */],
 						{ to: '/articles/create' },
-						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
 							{ className: 'btn_default', type: 'primary' },
 							'\u521B\u5EFA\u65B0\u6587\u7AE0'
 						)
 					)
 				),
-				__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
 					null,
-					__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_table___default.a, {
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_table___default.a, {
 						dataSource: this.state.articles,
 						rowKey: 'id',
 						columns: columns,
@@ -92171,7 +92182,7 @@ var ArticleList = function (_React$Component) {
 	}]);
 
 	return ArticleList;
-}(__WEBPACK_IMPORTED_MODULE_8_react___default.a.Component);
+}(__WEBPACK_IMPORTED_MODULE_9_react___default.a.Component);
 
 /***/ }),
 /* 540 */,
@@ -92198,8 +92209,8 @@ var ArticleList = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_input_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_antd_lib_input_style_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_input__ = __webpack_require__(529);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_antd_lib_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ArticleEdit_css__ = __webpack_require__(544);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ArticleEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__ArticleEdit_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Article_css__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Article_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Article_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_router_dom__ = __webpack_require__(90);
@@ -92293,8 +92304,8 @@ var ArticleEdit = function (_React$Component) {
 		value: function onContentChange(e) {
 			// console.log(e.target.innerText)
 			this.setState({
-				content: e.target.innerText,
-				previewContent: __WEBPACK_IMPORTED_MODULE_11_marked___default()(e.target.innerText, { breaks: true })
+				content: e.target.value,
+				previewContent: __WEBPACK_IMPORTED_MODULE_11_marked___default()(e.target.value, { breaks: true })
 			});
 		}
 	}, {
@@ -92372,11 +92383,11 @@ var ArticleEdit = function (_React$Component) {
 						type: 'text',
 						value: this.state.title,
 						onChange: this.onTitleChange.bind(this) }),
-					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement('div', {
+					__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement('textarea', {
 						className: 'edit_content',
-						dangerouslySetInnerHTML: { __html: this.state.content },
-						contentEditable: 'plaintext-only',
-						onInput: this.onContentChange.bind(this) })
+						type: 'text',
+						value: this.state.content,
+						onChange: this.onContentChange.bind(this) })
 				),
 				__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 					'div',
@@ -92402,13 +92413,15 @@ var ArticleEdit = function (_React$Component) {
 }(__WEBPACK_IMPORTED_MODULE_9_react___default.a.Component);
 
 /***/ }),
-/* 544 */
+/* 544 */,
+/* 545 */,
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(545);
+var content = __webpack_require__(547);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -92422,8 +92435,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./ArticleEdit.css", function() {
-			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./ArticleEdit.css");
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./Article.css", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./Article.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -92433,7 +92446,7 @@ if(false) {
 }
 
 /***/ }),
-/* 545 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(10)(false);
@@ -92441,7 +92454,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, ".edit_containter {\r\n  margin: 2px 10px 2px 0px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit_title {\r\n\twidth: 98%;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tborder: 1px solid #404040;\r\n}\r\n\r\n.edit_content {\r\n\twidth: 98%;\r\n\theight: 300px;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tmargin-top: 15px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid gray;\r\n\tbackground: #fff;\r\n}\r\n\r\n.preview_containter {\r\n\tborder: 1px dashed gray;\r\n\tmargin: 2px 10px 2px 0px;\r\n\tpadding: 1px 1px 1px 5px;\r\n}", ""]);
+exports.push([module.i, ".ant-table-thead > tr > th, .ant-table-tbody > tr > td {\r\n\ttext-align: center;\r\n}\r\n.edit_containter {\r\n  margin: 2px 10px 2px 0px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit_title {\r\n\twidth: 98%;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tborder: 1px solid #404040;\r\n}\r\n\r\n.edit_content {\r\n\twidth: 98%;\r\n\theight: 300px;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tmargin-top: 15px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid gray;\r\n\tbackground: #fff;\r\n}\r\n\r\n.preview_containter {\r\n\tborder: 1px dashed gray;\r\n\tmargin: 2px 10px 2px 0px;\r\n\tpadding: 1px 1px 1px 5px;\r\n}", ""]);
 
 // exports
 

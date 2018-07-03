@@ -1,3 +1,4 @@
+import "./Article.css"
 import React, { Component } from 'react';
 import { Button, Table, Switch, Notification } from 'antd';
 import { Link } from 'react-router-dom';
@@ -72,16 +73,18 @@ export class ArticleList extends React.Component {
 	}
 
 	handleEdit (id) {
-		// window.location('/')
 		this.props.history.push('/articles/edit/'+id)
-		// this.props.history.push('/')
-		console.log("want to handle edit")
+		// console.log("want to handle edit")
+	}
+
+	handlePreview (id) {
+		console.log('want a preview')
 	}
 
 	render () {
 	  const columns = [
 	  	{
-	  		title: '序号',
+	  		title: '文章ID',
 	  		dataIndex: 'id',
 	  		key: 'id',
 	  	}, {
@@ -99,7 +102,7 @@ export class ArticleList extends React.Component {
 	  		title: '标题',
 	  		dataIndex: 'title',
 	  		key: 'title',
-	  		width: '120px',
+	  		width: '200px',
 	  	}, {
 	  		title: '用户ID',
 	  		dataIndex: 'user_id',
@@ -118,7 +121,8 @@ export class ArticleList extends React.Component {
 	  		render: (text, record) => (
 			    <span>
 			    	<Button className="btn_default" type="danger" onClick={this.handleDelete.bind(this, record.id)}>删除</Button>
-			    	<Button className="btn_default" onClick={this.handleEdit.bind(this, record.id)}>编辑</Button>
+			    	<Button className="btn_default" type="primary" onClick={this.handleEdit.bind(this, record.id)}>编辑</Button>
+			    	<Button className="btn_default"  onClick={this.handlePreview.bind(this, record.id)}>查看</Button>
 			    </span>
 			  ),
 	  	}
