@@ -47021,8 +47021,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_router_dom__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__BasisInfo_BasisInfo__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ArticleEdit_ArticleList__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ArticleEdit_ArticleCreate__ = __webpack_require__(521);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Article_ArticleList__ = __webpack_require__(539);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Article_ArticleEdit__ = __webpack_require__(543);
 
 
 
@@ -47143,8 +47143,9 @@ var Main = function (_Component) {
 							Content,
 							{ style: { margin: '24px 16px 0', overflow: 'initial' } },
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/info', exact: true, component: __WEBPACK_IMPORTED_MODULE_12__BasisInfo_BasisInfo__["a" /* BasisInfo */] }),
-							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles', exact: true, component: __WEBPACK_IMPORTED_MODULE_13__ArticleEdit_ArticleList__["a" /* ArticleList */] }),
-							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles/create', exact: true, component: __WEBPACK_IMPORTED_MODULE_14__ArticleEdit_ArticleCreate__["a" /* ArticleCreate */] }),
+							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles', exact: true, component: __WEBPACK_IMPORTED_MODULE_13__Article_ArticleList__["a" /* ArticleList */] }),
+							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles/create', exact: true, component: __WEBPACK_IMPORTED_MODULE_14__Article_ArticleEdit__["a" /* ArticleEdit */] }),
+							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_react_router_dom__["c" /* Route */], { path: '/articles/edit/:id', exact: true, component: __WEBPACK_IMPORTED_MODULE_14__Article_ArticleEdit__["a" /* ArticleEdit */] }),
 							__WEBPACK_IMPORTED_MODULE_9_react___default.a.createElement(
 								'p',
 								null,
@@ -76335,231 +76336,7 @@ var BasisInfo = function (_React$Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
 /***/ }),
-/* 355 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArticleList; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_table_style_css__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_table_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_table_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_table__ = __webpack_require__(379);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_table__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_button__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_switch_style_css__ = __webpack_require__(515);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_switch_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_switch_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_switch__ = __webpack_require__(518);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css__ = __webpack_require__(522);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_notification__ = __webpack_require__(525);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router_dom__ = __webpack_require__(90);
-
-
-
-
-
-
-
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var ArticleList = function (_React$Component) {
-	_inherits(ArticleList, _React$Component);
-
-	function ArticleList() {
-		_classCallCheck(this, ArticleList);
-
-		var _this = _possibleConstructorReturn(this, (ArticleList.__proto__ || Object.getPrototypeOf(ArticleList)).call(this));
-
-		_this.state = {
-			articles: []
-		};
-		__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a.config({
-			duration: 3,
-			placement: 'topLeft'
-		});
-		return _this;
-	}
-
-	_createClass(ArticleList, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.fetchData();
-		}
-	}, {
-		key: 'fetchData',
-		value: function fetchData() {
-			var that = this;
-			axios.get('/articles/list').then(function (response) {
-				that.setState({
-					articles: response.data
-				});
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}, {
-		key: 'changePulic',
-		value: function changePulic(id) {
-			var that = this;
-			axios.post('/articles/changePublic', {
-				id: id
-			}).then(function (response) {
-				var articles = that.state.articles;
-				var index = articles.findIndex(function (element) {
-					return element.id == id;
-				});
-				articles[index].is_public = (articles[index].is_public + 1) % 2;
-				that.setState({
-					articles: articles
-				});
-				__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a["success"]({
-					message: '成功',
-					description: response.data.description
-				});
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}, {
-		key: 'handleDelete',
-		value: function handleDelete(id) {
-			var that = this;
-			axios.get('/articles/delete/' + id).then(function (response) {
-				var index = that.state.articles.findIndex(function (element) {
-					return element.id == id;
-				});
-				var articles = [];
-				for (var i = 0; i < that.state.articles.length; i++) {
-					if (i != index) {
-						articles.push(that.state.articles[i]);
-					}
-				}
-				that.setState({
-					articles: articles
-				});
-				__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a["success"]({
-					message: '成功',
-					description: response.data.description
-				});
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}, {
-		key: 'handleEdit',
-		value: function handleEdit() {
-			console.log("want to handle edit");
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var columns = [{
-				title: '序号',
-				dataIndex: 'id',
-				key: 'id'
-			}, {
-				title: '公开',
-				dataIndex: 'is_public',
-				key: 'is_public',
-				render: function render(text, record) {
-					if (record.is_public) {
-						return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', defaultChecked: true, onChange: _this2.changePulic.bind(_this2, record.id) });
-					} else {
-						return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', onChange: _this2.changePulic.bind(_this2, record.id) });
-					}
-				}
-			}, {
-				title: '标题',
-				dataIndex: 'title',
-				key: 'title',
-				width: '120px'
-			}, {
-				title: '用户ID',
-				dataIndex: 'user_id',
-				key: 'user_id'
-			}, {
-				title: '赞数',
-				dataIndex: 'likes_count',
-				key: 'likes_count'
-			}, {
-				title: '发布时间',
-				dataIndex: 'created_at',
-				key: 'created_at'
-			}, {
-				title: '操作',
-				key: 'action',
-				render: function render(text, record) {
-					return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-						'span',
-						null,
-						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
-							{ className: 'btn_default', type: 'danger', onClick: _this2.handleDelete.bind(_this2, record.id) },
-							'\u5220\u9664'
-						),
-						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
-							{ className: 'btn_default', onClick: _this2.handleEdit.bind(_this2) },
-							'\u7F16\u8F91'
-						)
-					);
-				}
-			}];
-
-			return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-				'div',
-				null,
-				__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-					'div',
-					{ className: 'btn_group' },
-					__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["b" /* Link */],
-						{ to: '/articles/create' },
-						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
-							{ className: 'btn_default', type: 'primary' },
-							'\u521B\u5EFA\u65B0\u6587\u7AE0'
-						)
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
-					'div',
-					null,
-					__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_table___default.a, {
-						dataSource: this.state.articles,
-						rowKey: 'id',
-						columns: columns,
-						style: { padding: '40px 0', background: "white" }
-					})
-				)
-			);
-		}
-	}]);
-
-	return ArticleList;
-}(__WEBPACK_IMPORTED_MODULE_8_react___default.a.Component);
-
-/***/ }),
+/* 355 */,
 /* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -89510,217 +89287,7 @@ Switch.defaultProps = {
 /* harmony default export */ __webpack_exports__["default"] = (Switch);
 
 /***/ }),
-/* 521 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArticleCreate; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css__ = __webpack_require__(522);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_notification__ = __webpack_require__(525);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_input__ = __webpack_require__(529);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ArticleCreate_css__ = __webpack_require__(534);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ArticleCreate_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__ArticleCreate_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_router_dom__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_marked__ = __webpack_require__(536);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_marked__);
-
-
-
-
-
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var TextArea = __WEBPACK_IMPORTED_MODULE_5_antd_lib_input___default.a.TextArea;
-
-
-
-var ArticleCreate = function (_React$Component) {
-	_inherits(ArticleCreate, _React$Component);
-
-	function ArticleCreate() {
-		_classCallCheck(this, ArticleCreate);
-
-		var _this = _possibleConstructorReturn(this, (ArticleCreate.__proto__ || Object.getPrototypeOf(ArticleCreate)).call(this));
-
-		_this.state = {
-			title: "",
-			content: "",
-			previewTitle: "",
-			previewContent: "",
-			is_public: 1
-		};
-		__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a.config({
-			duration: 3,
-			placement: 'topLeft'
-		});
-		return _this;
-	}
-
-	_createClass(ArticleCreate, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.fetchData();
-		}
-	}, {
-		key: 'fetchData',
-		value: function fetchData() {}
-	}, {
-		key: 'onTitleChange',
-		value: function onTitleChange(e) {
-			// console.log(e.target.value)
-			this.setState({
-				title: e.target.value,
-				previewTitle: "<h1>" + e.target.value + "</h1>"
-			});
-		}
-	}, {
-		key: 'onContentChange',
-		value: function onContentChange(e) {
-			// console.log(e.target.innerText)
-			this.setState({
-				content: e.target.innerText,
-				previewContent: __WEBPACK_IMPORTED_MODULE_9_marked___default()(e.target.innerText, { breaks: true })
-			});
-		}
-	}, {
-		key: 'handlePublish',
-		value: function handlePublish(e) {
-			var that = this;
-			axios.post('/articles/save', {
-				title: that.state.title,
-				content: that.state.content,
-				is_public: 1
-			}).then(function (response) {
-				__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a["success"]({
-					message: '文章发布成功',
-					description: '正在跳转'
-				});
-				that.props.history.push('/articles');
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}, {
-		key: 'handleSave',
-		value: function handleSave(e) {
-			var that = this;
-			axios.post('/articles/save', {
-				title: that.state.title,
-				content: that.state.content,
-				is_public: 0
-			}).then(function (response) {
-				__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a["success"]({
-					message: '文章保存成功',
-					description: '正在跳转'
-				});
-				that.props.history.push('/articles');
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}, {
-		key: 'handlePreview',
-		value: function handlePreview(e) {
-			// console.log(this)
-			// this.props.history.push('/articles')
-			console.log('want a preview');
-		}
-	}, {
-		key: 'handleImport',
-		value: function handleImport(e) {
-			console.log("want a import");
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-				'div',
-				null,
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-					'div',
-					{ className: 'btn_group' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_8_react_router_dom__["b" /* Link */],
-						{ to: '/articles' },
-						__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-							__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-							{ className: 'btn_default' },
-							'\u8FD4\u56DE'
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-						{ className: 'btn_default', type: 'primary', onClick: this.handlePreview.bind(this) },
-						'\u9884\u89C8'
-					),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-						{ className: 'btn_default', type: 'dashed', onClick: this.handlePreview.bind(this) },
-						'\u5BFC\u5165'
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-					'div',
-					{ className: 'edit_containter' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('input', {
-						className: 'edit_title',
-						type: 'text',
-						onChange: this.onTitleChange.bind(this) }),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', {
-						className: 'edit_content',
-						contentEditable: 'plaintext-only',
-						onInput: this.onContentChange.bind(this) })
-				),
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-					'div',
-					{ className: 'btn_group' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-						{ className: 'btn_default', onClick: this.handleSave.bind(this) },
-						'\u4FDD\u5B58'
-					),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
-						{ className: 'btn_default', type: 'primary', onClick: this.handlePublish.bind(this) },
-						'\u53D1\u51FA'
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-					'div',
-					{ className: 'preview_containter' },
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewTitle } }),
-					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewContent } })
-				)
-			);
-		}
-	}]);
-
-	return ArticleCreate;
-}(__WEBPACK_IMPORTED_MODULE_7_react___default.a.Component);
-
-/***/ }),
+/* 521 */,
 /* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -90849,51 +90416,8 @@ function calculateNodeHeight(uiTextNode) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 534 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(535);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(11)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./ArticleCreate.css", function() {
-			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./ArticleCreate.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 535 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(10)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".edit_containter {\r\n  margin: 2px 10px 2px 0px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit_title {\r\n\twidth: 98%;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tborder: 1px solid #404040;\r\n}\r\n\r\n.edit_content {\r\n\twidth: 98%;\r\n\theight: 300px;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tmargin-top: 15px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid gray;\r\n\tbackground: #fff;\r\n}\r\n\r\n.preview_containter {\r\n\tborder: 1px dashed gray;\r\n\tmargin: 2px 10px 2px 0px;\r\n\tpadding: 1px 1px 1px 5px;\r\n}", ""]);
-
-// exports
-
-
-/***/ }),
+/* 534 */,
+/* 535 */,
 /* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -92419,6 +91943,516 @@ if (true) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 538 */,
+/* 539 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArticleList; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_table_style_css__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_table_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_table_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_table__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_table__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_button_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_button__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_button__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_switch_style_css__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_switch_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_switch_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_switch__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css__ = __webpack_require__(522);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_antd_lib_notification_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_notification__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router_dom__ = __webpack_require__(90);
+
+
+
+
+
+
+
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var ArticleList = function (_React$Component) {
+	_inherits(ArticleList, _React$Component);
+
+	function ArticleList() {
+		_classCallCheck(this, ArticleList);
+
+		var _this = _possibleConstructorReturn(this, (ArticleList.__proto__ || Object.getPrototypeOf(ArticleList)).call(this));
+
+		_this.state = {
+			articles: []
+		};
+		__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a.config({
+			duration: 3,
+			placement: 'topLeft'
+		});
+		return _this;
+	}
+
+	_createClass(ArticleList, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.fetchData();
+		}
+	}, {
+		key: 'fetchData',
+		value: function fetchData() {
+			var that = this;
+			axios.get('/articles/list').then(function (response) {
+				that.setState({
+					articles: response.data
+				});
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'changePulic',
+		value: function changePulic(id) {
+			var that = this;
+			axios.post('/articles/changePublic', {
+				id: id
+			}).then(function (response) {
+				var articles = that.state.articles;
+				var index = articles.findIndex(function (element) {
+					return element.id == id;
+				});
+				articles[index].is_public = (articles[index].is_public + 1) % 2;
+				that.setState({
+					articles: articles
+				});
+				__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a["success"]({
+					message: '成功',
+					description: response.data.description
+				});
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'handleDelete',
+		value: function handleDelete(id) {
+			var that = this;
+			axios.get('/articles/delete/' + id).then(function (response) {
+				var index = that.state.articles.findIndex(function (element) {
+					return element.id == id;
+				});
+				var articles = [];
+				for (var i = 0; i < that.state.articles.length; i++) {
+					if (i != index) {
+						articles.push(that.state.articles[i]);
+					}
+				}
+				that.setState({
+					articles: articles
+				});
+				__WEBPACK_IMPORTED_MODULE_7_antd_lib_notification___default.a["success"]({
+					message: '成功',
+					description: response.data.description
+				});
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'handleEdit',
+		value: function handleEdit(id) {
+			// window.location('/')
+			this.props.history.push('/articles/edit/' + id);
+			// this.props.history.push('/')
+			console.log("want to handle edit");
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var columns = [{
+				title: '序号',
+				dataIndex: 'id',
+				key: 'id'
+			}, {
+				title: '公开',
+				dataIndex: 'is_public',
+				key: 'is_public',
+				render: function render(text, record) {
+					if (record.is_public) {
+						return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', defaultChecked: true, onChange: _this2.changePulic.bind(_this2, record.id) });
+					} else {
+						return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_antd_lib_switch___default.a, { size: 'small', onChange: _this2.changePulic.bind(_this2, record.id) });
+					}
+				}
+			}, {
+				title: '标题',
+				dataIndex: 'title',
+				key: 'title',
+				width: '120px'
+			}, {
+				title: '用户ID',
+				dataIndex: 'user_id',
+				key: 'user_id'
+			}, {
+				title: '赞数',
+				dataIndex: 'likes_count',
+				key: 'likes_count'
+			}, {
+				title: '发布时间',
+				dataIndex: 'created_at',
+				key: 'created_at'
+			}, {
+				title: '操作',
+				key: 'action',
+				render: function render(text, record) {
+					return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+						'span',
+						null,
+						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
+							{ className: 'btn_default', type: 'danger', onClick: _this2.handleDelete.bind(_this2, record.id) },
+							'\u5220\u9664'
+						),
+						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
+							{ className: 'btn_default', onClick: _this2.handleEdit.bind(_this2, record.id) },
+							'\u7F16\u8F91'
+						)
+					);
+				}
+			}];
+
+			return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+				'div',
+				null,
+				__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+					'div',
+					{ className: 'btn_group' },
+					__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["b" /* Link */],
+						{ to: '/articles/create' },
+						__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+							__WEBPACK_IMPORTED_MODULE_3_antd_lib_button___default.a,
+							{ className: 'btn_default', type: 'primary' },
+							'\u521B\u5EFA\u65B0\u6587\u7AE0'
+						)
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+					'div',
+					null,
+					__WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_antd_lib_table___default.a, {
+						dataSource: this.state.articles,
+						rowKey: 'id',
+						columns: columns,
+						style: { padding: '40px 0', background: "white" }
+					})
+				)
+			);
+		}
+	}]);
+
+	return ArticleList;
+}(__WEBPACK_IMPORTED_MODULE_8_react___default.a.Component);
+
+/***/ }),
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArticleEdit; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_button_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_antd_lib_button__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css__ = __webpack_require__(522);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_antd_lib_notification_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_notification__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_antd_lib_input_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_input__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_antd_lib_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_antd_lib_input__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ArticleEdit_css__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ArticleEdit_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__ArticleEdit_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_router_dom__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_marked__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_marked__);
+
+
+
+
+
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var TextArea = __WEBPACK_IMPORTED_MODULE_5_antd_lib_input___default.a.TextArea;
+
+
+
+var ArticleEdit = function (_React$Component) {
+	_inherits(ArticleEdit, _React$Component);
+
+	function ArticleEdit(props) {
+		_classCallCheck(this, ArticleEdit);
+
+		var _this = _possibleConstructorReturn(this, (ArticleEdit.__proto__ || Object.getPrototypeOf(ArticleEdit)).call(this));
+
+		_this.state = {
+			id: props.match.params.id,
+			title: "",
+			content: "",
+			previewTitle: "",
+			previewContent: "",
+			is_public: 1
+		};
+		__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a.config({
+			duration: 3,
+			placement: 'topLeft'
+		});
+		return _this;
+	}
+
+	_createClass(ArticleEdit, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			if (this.state.id) {
+				this.fetchData();
+				// console.log('we got a edit situation here')
+			} else {
+					// console.log('we got a create situation here')
+				}
+		}
+	}, {
+		key: 'fetchData',
+		value: function fetchData() {
+			var that = this;
+			axios.get('/articles/get/' + that.state.id).then(function (response) {
+				var article = response.data.article;
+				that.setState({
+					title: article.title,
+					content: article.content,
+					previewTitle: "<h1>" + article.title + "</h1>",
+					previewContent: __WEBPACK_IMPORTED_MODULE_9_marked___default()(article.content, { breaks: true }),
+					is_public: article.is_public
+				});
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'onTitleChange',
+		value: function onTitleChange(e) {
+			// console.log(e.target.value)
+			this.setState({
+				title: e.target.value,
+				previewTitle: "<h1>" + e.target.value + "</h1>"
+			});
+		}
+	}, {
+		key: 'onContentChange',
+		value: function onContentChange(e) {
+			// console.log(e.target.innerText)
+			this.setState({
+				content: e.target.innerText,
+				previewContent: __WEBPACK_IMPORTED_MODULE_9_marked___default()(e.target.innerText, { breaks: true })
+			});
+		}
+	}, {
+		key: 'handlePublish',
+		value: function handlePublish(e) {
+			var that = this;
+			axios.post('/articles/save', {
+				title: that.state.title,
+				content: that.state.content,
+				is_public: 1
+			}).then(function (response) {
+				__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a["success"]({
+					message: '文章发布成功',
+					description: '正在跳转'
+				});
+				that.props.history.push('/articles');
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'handleSave',
+		value: function handleSave(e) {
+			var that = this;
+			axios.post('/articles/save', {
+				title: that.state.title,
+				content: that.state.content,
+				is_public: 0
+			}).then(function (response) {
+				__WEBPACK_IMPORTED_MODULE_3_antd_lib_notification___default.a["success"]({
+					message: '文章保存成功',
+					description: '正在跳转'
+				});
+				that.props.history.push('/articles');
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'handlePreview',
+		value: function handlePreview(e) {
+			// console.log(this)
+			// this.props.history.push('/articles')
+			console.log('want a preview');
+		}
+	}, {
+		key: 'handleImport',
+		value: function handleImport(e) {
+			console.log("want a import");
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+				'div',
+				null,
+				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+					'div',
+					{ className: 'btn_group' },
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_8_react_router_dom__["b" /* Link */],
+						{ to: '/articles' },
+						__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+							__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+							{ className: 'btn_default' },
+							'\u8FD4\u56DE'
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+						{ className: 'btn_default', type: 'primary', onClick: this.handlePreview.bind(this) },
+						'\u9884\u89C8'
+					),
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+						{ className: 'btn_default', type: 'dashed', onClick: this.handlePreview.bind(this) },
+						'\u5BFC\u5165'
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+					'div',
+					{ className: 'edit_containter' },
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('input', {
+						className: 'edit_title',
+						type: 'text',
+						value: this.state.title,
+						onChange: this.onTitleChange.bind(this) }),
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', {
+						className: 'edit_content',
+						dangerouslySetInnerHTML: { __html: this.state.content },
+						contentEditable: 'plaintext-only',
+						onInput: this.onContentChange.bind(this) })
+				),
+				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+					'div',
+					{ className: 'btn_group' },
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+						{ className: 'btn_default', onClick: this.handleSave.bind(this) },
+						'\u4FDD\u5B58'
+					),
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_1_antd_lib_button___default.a,
+						{ className: 'btn_default', type: 'primary', onClick: this.handlePublish.bind(this) },
+						'\u53D1\u51FA'
+					)
+				),
+				__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+					'div',
+					{ className: 'preview_containter' },
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewTitle } }),
+					__WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement('div', { dangerouslySetInnerHTML: { __html: this.state.previewContent } })
+				)
+			);
+		}
+	}]);
+
+	return ArticleEdit;
+}(__WEBPACK_IMPORTED_MODULE_7_react___default.a.Component);
+
+/***/ }),
+/* 544 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(545);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(11)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./ArticleEdit.css", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./ArticleEdit.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 545 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".edit_containter {\r\n  margin: 2px 10px 2px 0px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit_title {\r\n\twidth: 98%;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tborder: 1px solid #404040;\r\n}\r\n\r\n.edit_content {\r\n\twidth: 98%;\r\n\theight: 300px;\r\n\tpadding: 1px 1px 1px 5px;\r\n\tmargin-top: 15px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid gray;\r\n\tbackground: #fff;\r\n}\r\n\r\n.preview_containter {\r\n\tborder: 1px dashed gray;\r\n\tmargin: 2px 10px 2px 0px;\r\n\tpadding: 1px 1px 1px 5px;\r\n}", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

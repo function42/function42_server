@@ -27,7 +27,8 @@ Route::middleware('auth')->get('/user', 'UserController@basis_info');
 
 Route::middleware('auth')->get('/articles/list', 'ArticleController@articles_list');
 Route::middleware('auth')->post('/articles/save', 'ArticleController@save_article');
-Route::middleware('auth')->post('/articles/changePublic', 'ArticleController@change_public');
+Route::middleware('auth')->post('/articles/changePublic', 'ArticleController@change_public'); // 需要改成get方法
+Route::middleware('auth')->get('/articles/get/{id}', 'ArticleController@get_article');
 Route::middleware('auth')->get('/articles/delete/{id}', 'ArticleController@delete_article');
 // Route::middleware('auth')->post('/articles/changePublic', function () {
 // 	return 'hh';

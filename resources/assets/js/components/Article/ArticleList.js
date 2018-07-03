@@ -19,7 +19,7 @@ export class ArticleList extends React.Component {
 	}
 
 	fetchData () {
-  	var that = this
+  	let that = this
 		axios.get('/articles/list')
     .then(function (response) {
       that.setState({
@@ -71,7 +71,10 @@ export class ArticleList extends React.Component {
     }).catch(function (error) { console.log(error); });
 	}
 
-	handleEdit () {
+	handleEdit (id) {
+		// window.location('/')
+		this.props.history.push('/articles/edit/'+id)
+		// this.props.history.push('/')
 		console.log("want to handle edit")
 	}
 
@@ -115,7 +118,7 @@ export class ArticleList extends React.Component {
 	  		render: (text, record) => (
 			    <span>
 			    	<Button className="btn_default" type="danger" onClick={this.handleDelete.bind(this, record.id)}>删除</Button>
-			    	<Button className="btn_default" onClick={this.handleEdit.bind(this)}>编辑</Button>
+			    	<Button className="btn_default" onClick={this.handleEdit.bind(this, record.id)}>编辑</Button>
 			    </span>
 			  ),
 	  	}

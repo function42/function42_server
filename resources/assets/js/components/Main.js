@@ -5,8 +5,8 @@ import { BrowserRouter as Router, HashRouter, Route, Link } from 'react-router-d
 import { Layout, Menu, Icon, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 import { BasisInfo } from './BasisInfo/BasisInfo'
-import { ArticleList } from './ArticleEdit/ArticleList'
-import { ArticleCreate } from './ArticleEdit/ArticleCreate'
+import { ArticleList } from './Article/ArticleList'
+import { ArticleEdit } from './Article/ArticleEdit'
 
 
 
@@ -55,7 +55,8 @@ export default class Main extends Component {
 						<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
 							<Route path="/info" exact component={BasisInfo}/>
 							<Route path="/articles" exact component={ArticleList}/>						
-							<Route path="/articles/create" exact component={ArticleCreate}/>						
+							<Route path="/articles/create" exact component={ArticleEdit}/>
+							<Route path="/articles/edit/:id" exact component={ArticleEdit}/>					
 							<p>Welcome Aboard!</p>
 						</Content>
 						<Footer style={{ textAlign: 'center' }}>

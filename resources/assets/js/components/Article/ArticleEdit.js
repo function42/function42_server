@@ -1,20 +1,21 @@
-import "./ArticleCreate.css"
+import "./ArticleEdit.css"
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Input, Icon, Notification } from 'antd';
 const { TextArea } = Input;
 import marked from 'marked'
 
-export class ArticleCreate extends React.Component {
-	constructor () {
+export class ArticleEdit extends React.Component {
+	constructor (props) {
 		super();
 		this.state = {
+			id: props.match.params.id,
 			title: "",
 			content: "",
 			previewTitle: "",
 			previewContent: "",
 			is_public: 1,
-		};
+		}
 		Notification.config({
 			duration: 3,
     	placement: 'topLeft',
@@ -22,12 +23,29 @@ export class ArticleCreate extends React.Component {
 	}
 
 	componentWillMount () {
-		this.fetchData()
+		if (this.state.id) {
+			this.fetchData()
+			// console.log('we got a edit situation here')
+		} else {
+			// console.log('we got a create situation here')
+		}
 	}
 
 	fetchData () {
-
+		let that = this
+		axios.get('/articles/get/'+that.state.id)
+    .then(function (response) {
+    	let article = response.data.article
+      that.setState({
+	      title: article.title,
+				content: article.content,
+				previewTitle: "<h1>"+article.title+"</h1>",
+				previewContent: marked(article.content, {breaks: true}),
+				is_public: article.is_public
+      })
+    }).catch(function (error) { console.log(error); });
 	}
+
 
 	onTitleChange (e)  {
 		// console.log(e.target.value)
@@ -99,9 +117,11 @@ export class ArticleCreate extends React.Component {
 					<input
 						className = "edit_title"
 						type = "text"
+						value = {this.state.title}
 						onChange = {this.onTitleChange.bind(this)} />
 					<div
 						className = "edit_content"
+						dangerouslySetInnerHTML={{__html: this.state.content}}
 						contentEditable = "plaintext-only"
 						onInput = {this.onContentChange.bind(this)} />
 				</div>

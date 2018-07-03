@@ -24,14 +24,13 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function get_article(Request $request)
+    public function get_article($id)
     {
-        // $id = $request->id;
-        // $article = Article::where('id', $id);
-        // return response() -> json([
-        //     'status' => 0,
-        //     'article' => $article
-        // ]);
+        $article = Article::find($id);
+        return response() -> json([
+            'status' => 0,
+            'article' => $article
+        ]);
     }
 
     /**
